@@ -1,0 +1,12 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(50%);
+}
+
+div {
+    background-color: skyblue;
+    width: 500px;
+    height: 400px;
+}
