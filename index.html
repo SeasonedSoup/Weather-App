@@ -8,8 +8,17 @@
     <title>Weather App</title>
 </head>
 <body>
+    <h1>COOL WEATHER APP</h1>
     <div class="container">
-        <p>Weather Condition: <span></span> </p>
+        <form onsubmit="getLocation(event)">
+            <label for="location"></label>
+            <input type="text" id="location" name="location" autocomplete="off">
+            <button type="submit">Submit</button>
+        </form>
+        <p>Location: <span id="address"></span></p>
+        <p>Weather Condition: <span id="condition"></span> </p>
+        <p>Description: <span id="description"></span></p>
+        <p>Temperature: <span id="temp"></span></p>
     </div>
 </body>
 </html>
