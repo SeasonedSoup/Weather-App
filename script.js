@@ -42,8 +42,12 @@ async function countryWeather(country) {
 
         for (let key in vals) {
             const span = document.getElementById(key)
-
             span.textContent = vals[key]
+            console.log(`Key: ${key}, Condition: ${condition}`);
+            if (key = "condition") {
+                console.log('The key is condition')
+                gif(vals[key]);
+            }
         }
     } catch (err) {
         alert("Invalid Request", err)
@@ -66,3 +70,11 @@ function getVals(convertedData) {
     }
     return obj;
 } 
+const img = document.querySelector('img')
+async function gif(condition) {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=FTLqpVYqOlJbLAA5EMFEgYlzYpOK3aNc&s=${condition}`, {mode: 'cors'})
+    const queryData = await response.json();
+    img.src = queryData.data.images.original.url;
+}
+
+gif("Weather");
