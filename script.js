@@ -13,10 +13,12 @@ toggleButton.addEventListener('click', () => {
 
     if (fahrenheight) {
         const floatTemp = parseFloat(trimTemp)
-        temp.textContent = (floatTemp -32) * 5/9 + " C°";
+        const newCels = (floatTemp -32) * 5/9;
+        temp.textContent = newCels.toFixed(1) +  " C°"
     } else {
         const floatTemp = parseFloat(trimTemp)
-        temp.textContent = (floatTemp * 9/5) + 32 + " F°";
+        const newFahren = (floatTemp * 9/5) + 32;
+        temp.textContent = newFahren.toFixed(1) + " F°"
     }
     fahrenheight = !fahrenheight;
 })
@@ -60,7 +62,7 @@ function getVals(convertedData) {
         condition : convertedData.currentConditions.conditions,
         address : convertedData.resolvedAddress,
         description : convertedData.description,
-        temp : convertedData.currentConditions.temp + 'F°'
+        temp : convertedData.currentConditions.temp + ' F°'
     }
     return obj;
 } 
