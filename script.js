@@ -1,5 +1,25 @@
 const spans = document.querySelectorAll('span')
+const toggleButton = document.querySelector('.toggle')
+let fahrenheight = true;
+toggleButton.addEventListener('click', () => {
+    console.log('hi')
 
+    const temp = document.querySelector('#temp')
+    const trimTemp = temp.textContent.trim()
+    if (!trimTemp) {
+        console.log('its empty!')
+        return;
+    }
+
+    if (fahrenheight) {
+        const floatTemp = parseFloat(trimTemp)
+        temp.textContent = (floatTemp -32) * 5/9 + " C°";
+    } else {
+        const floatTemp = parseFloat(trimTemp)
+        temp.textContent = (floatTemp * 9/5) + 32 + " F°";
+    }
+    fahrenheight = !fahrenheight;
+})
 
 function getLocation(event) {
     event.preventDefault();
@@ -40,7 +60,7 @@ function getVals(convertedData) {
         condition : convertedData.currentConditions.conditions,
         address : convertedData.resolvedAddress,
         description : convertedData.description,
-        temp : convertedData.currentConditions.temp
+        temp : convertedData.currentConditions.temp + 'F°'
     }
     return obj;
 } 
